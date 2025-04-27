@@ -1,0 +1,5 @@
+User-agent: * Allow: / Allow: /.png Allow: /.bmp Allow: /.ico Disallow: /admin/ Disallow: /login/ Disallow: /wp-admin/ Disallow: /.js
+
+Sitemap: https://www.spreema.com/sitemap.xml
+
+Host: https://www.spreema.com

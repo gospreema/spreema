@@ -1,0 +1,14 @@
+/* TEAM */
+Name: Spreema Team
+Contact: hello@spreema.com
+Twitter: @spreema
+Location: Remote
+
+/* THANKS */
+Name: Our amazing developers and AI innovators
+
+/* SITE */
+Last update: 2025/04/27
+Language: English
+Standards: HTML5, CSS3, JavaScript
+Purpose: Revolutionizing e-commerce with AI
