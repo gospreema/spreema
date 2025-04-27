@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreema - Revolutionizing E-Commerce with AI</title>
+    <meta name="description" content="Spreema is an AI-powered e-commerce marketplace that restores trust, simplifies shopping, and delivers joy with streamlined search, seamless checkout, and smart returns.">
+    <meta name="keywords" content="e-commerce, AI, online shopping, personalized shopping, free shipping, smart returns, Spreema">
+    <meta name="author" content="Spreema">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Spreema - The Future of E-Commerce">
+    <meta property="og:description" content="Join Spreema to experience an AI-driven marketplace that makes shopping faster, easier, and more trustworthy.">
+    <meta property="og:image" content="SpreemaLogo.png">
+    <meta property="og:url" content="https://www.spreema.com">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background: url('background.png') repeat;
+            overflow-x: hidden;
+        }
+        nav {
+            background: #000;
+            color: white;
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            width: 100px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #FF6F00;
+        }
+        header {
+            background: linear-gradient(to bottom, #FF6F00, #FF4500);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 60px;
+        }
+        .hero-logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .cta-button {
+            background: #000;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #333;
+        }
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            color: #FF6F00;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #000;
+            font-size: 1.5em;
+        }
+        .problem-icon {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+        .problems-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .problem {
+            width: 30%;
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .problem:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        li {
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .problem p {
+            font-size: 1em;
+            margin: 10px 0;
+            text-align: left;
+        }
+        .solution-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .solution {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .solution:hover {
+            transform: scale(1.05);
+        }
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature {
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF6F00, #FF4500);
+            color: white;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        .team, .invest {
+            background: #f9f9f9;
+        }
+        .form-container {
+            margin: 20px 0;
+        }
+        input[type="email"] {
+            padding: 12px;
+            width: 300px;
+            border: 2px solid #FF6F00;
+            border-radius: 50px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #FF4500;
+            box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+        }
+        button {
+            padding: 12px 30px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background: #333;
+        }
+        .privacy {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+        footer {
+            background: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 10px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+            .problems-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .problem {
+                width: 80%;
+            }
+            .feature-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature {
+                width: 80%;
+            }
+            input[type="email"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <img src="SpreemaLogo.png" alt="Spreema Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#problems">Problems</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#features">Features</a>
+            <a href="#waitlist">Join</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <img src="SpreemaLogo.png" alt="Spreema Logo" class="hero-logo">
+        <h1>Reinventing E-Commerce with AI</h1>
+        <p>Spreema is an AI-powered marketplace that restores trust, simplifies shopping, and delivers joy to every customer.</p>
+        <a href="#waitlist" class="cta-button">Join the Waitlist</a>
+    </header>
+
+    <!-- Problems Section -->
+    <section id="problems">
+        <h2>The E-Commerce Challenge</h2>
+        <p>Today’s online shopping experience is broken. Here’s why:</p>
+        <div class="problems-grid">
+            <div class="problem">
+                <img src="brokensearch.png" alt="Broken Search Icon" class="problem-icon">
+                <h3>Search Struggles</h3>
+                <p>45% of customers face poor search functionality, with 40% overwhelmed by options and 35% confused by filters, driving frustration and lost sales.</p>
+                <ul>
+                    <li>45% - Poor Search Functionality</li>
+                    <li>40% - Overwhelming Options</li>
+                    <li>35% - Confusing Filters</li>
+                    <li>30% - Slow Performance</li>
+                    <li>25% - Inconsistent Categorization</li>
+                    <li>20% - Poor Product Info</li>
+                    <li>15% - Keyword Mismatches</li>
+                </ul>
+            </div>
+            <div class="problem">
+                <img src="brokendropoff.png" alt="Broken Dropoff Icon" class="problem-icon">
+                <h3>Checkout Dropoff</h3>
+                <p>Over 70% cart abandonment due to 66% citing shipping costs, 14% missing guest checkout, and 11% facing complex processes.</p>
+                <ul>
+                    <li>66% - Shipping Costs</li>
+                    <li>41% - Not Ready to Purchase</li>
+                    <li>25% - Higher Price and Fees</li>
+                    <li>24% - Save for Later</li>
+                    <li>14% - No Guest Checkout</li>
+                    <li>12% - Asks too much</li>
+                    <li>11% - Complex Process</li>
+                </ul>
+            </div>
+            <div class="problem">
+                <img src="brokenreturns.png" alt="Broken Returns Icon" class="problem-icon">
+                <h3>Costly Returns</h3>
+                <p>Returns exceed $550B yearly, with 50% from wrong sizes, 42% unmet expectations, and 20% counterfeit concerns.</p>
+                <ul>
+                    <li>52% - Damaged or Defective</li>
+                    <li>50% - Wrong Size or Fit</li>
+                    <li>42% - Bad Photo or Expectations</li>
+                    <li>37% - Incorrect Item</li>
+                    <li>20% - Changed Mind</li>
+                    <li>10% - Poor Quality or Low Value</li>
+                    <li>6% - Customer Order Error</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions">
+        <h2>Our AI-Powered Solutions</h2>
+        <p>Spreema tackles these challenges head-on with cutting-edge technology.</p>
+        <div class="solution-grid">
+            <div class="solution">
+                <h3>Streamlined Search</h3>
+                <p>AI-driven search finds what you want instantly.</p>
+            </div>
+            <div class="solution">
+                <h3>Seamless Checkout</h3>
+                <p>No re-registration, no friction, just ease.</p>
+            </div>
+            <div class="solution">
+                <h3>Free Shipping</h3>
+                <p>No subscriptions needed—free for all.</p>
+            </div>
+            <div class="solution">
+                <h3>Smart Returns</h3>
+                <p>Track, resolve, and return with confidence.</p>
+            </div>
+            <div class="solution">
+                <h3>Personalized Recommendations</h3>
+                <p>AI-curated products tailored to your preferences.</p>
+            </div>
+            <div class="solution">
+                <h3>Fraud Protection</h3>
+                <p>Advanced AI detects and prevents counterfeit risks.</p>
+            </div>
+            <div class="solution">
+                <h3>Dynamic Pricing</h3>
+                <p>AI-optimized pricing ensures the best deals.</p>
+            </div>
+            <div class="solution">
+                <h3>Instant Support</h3>
+                <p>AI-powered chat resolves issues in real-time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Why Choose Spreema?</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <h3>Real Reviews</h3>
+                <p>AI-verified feedback you can trust.</p>
+            </div>
+            <div class="feature">
+                <h3>True Personalization</h3>
+                <p>Shopping tailored to your preferences.</p>
+            </div>
+            <div class="feature">
+                <h3>Lightning Fast</h3>
+                <p>Blazing speed for a seamless experience.</p>
+            </div>
+            <div class="feature">
+                <h3>10% Off Everything</h3>
+                <p>Pass our savings directly to you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <h2>Our Vision</h2>
+        <p>At Spreema, we’re driven by a mission to restore trust, reinvent the selling experience, and bring back the joy of shopping for everyone.</p>
+    </section>
+
+    <!-- Investor Section -->
+    <section id="invest" class="invest">
+        <h2>For Investors</h2>
+        <p>Spreema is poised to disrupt the $5T e-commerce market with AI-driven innovation. Join us in reshaping the future of online shopping.</p>
+        <a href="#" class="cta-button" id="investor-contact" style="margin-top: 20px;">Get in Touch</a>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="waitlist">
+        <h2>Join the Future of Shopping</h2>
+        <p>Be the first to experience Spreema’s revolutionary platform.</p>
+        <div class="form-container">
+            <input type="email" id="waitlist-email" name="email" placeholder="Enter your email" required>
+            <button type="submit" id="waitlist-submit">Sign Up</button>
+        </div>
+        <p class="privacy">We value your privacy and will never share your email.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Spreema. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Email obfuscation and mailto link setup
+        const emailUser = 'john.lehew';
+        const emailDomain = 'spreema.com';
+        const emailAddress = emailUser + '@' + emailDomain;
+
+        // Investor contact link
+        const investorLink = document.getElementById('investor-contact');
+        investorLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'mailto:' + emailAddress + '?subject=Investor Inquiry for Spreema';
+        });
+
+        // Waitlist form submission
+        const waitlistSubmit = document.getElementById('waitlist-submit');
+        waitlistSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
+            const userEmail = document.getElementById('waitlist-email').value;
+            if (userEmail) {
+                window.location.href = 'mailto:' + emailAddress + '?subject=Waitlist Sign-Up&body=Please add me to the Spreema waitlist: ' + userEmail;
+            }
+        });
+    </script>
+</body>
+</html>
