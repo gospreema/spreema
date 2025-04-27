@@ -39,30 +39,46 @@
             align-items: center;
         }
         .nav-logo {
-            width: 100px;
-            background: transparent; /* Ensure logo background is transparent */
+            width: 50px;
+            background: transparent;
         }
         .nav-links a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
-            font-size: 1em;
+            font-size: 1.5em;
             transition: color 0.3s;
         }
         .nav-links a:hover {
             color: #FF6F00;
         }
+        .icon-lane {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            top: 115px;
+            z-index: 999;
+            overflow: hidden;
+            background: white;
+        }
+        .moving-icon {
+            width: 192px;
+            position: absolute;
+            left: -192px;
+            animation: moveAcross 8s ease-in-out infinite;
+            animation-delay: 3s;
+            background: white;
+        }
+        @keyframes moveAcross {
+            0% { left: -192px; }
+            100% { left: 100vw; }
+        }
         header {
             background: linear-gradient(to bottom, #FF6F00, #FF4500);
             color: white;
             text-align: center;
-            padding: 100px 20px;
-            margin-top: 70px; /* Adjusted to account for fixed nav height */
-        }
-        .hero-logo {
-            width: 250px; /* Increased size for better visibility */
-            margin-bottom: 20px;
-            background: transparent; /* Ensure logo background is transparent */
+            padding: 60px 20px;
+            margin-top: 265px;
         }
         h1 {
             font-family: 'Poppins', sans-serif;
@@ -88,7 +104,7 @@
             background: #333;
         }
         section {
-            padding: 80px 20px 60px; /* Added padding-top to prevent content overlap with fixed nav */
+            padding: 80px 20px 60px;
             text-align: center;
         }
         h2 {
@@ -132,10 +148,10 @@
         }
         li {
             margin: 10px 0;
-            font-size: 0.9em;
+            font-size: 1em;
         }
         .problem p {
-            font-size: 1em;
+            font-size: 1.1em;
             margin: 10px 0;
             text-align: left;
         }
@@ -154,6 +170,9 @@
         }
         .solution:hover {
             transform: scale(1.05);
+        }
+        .solution p {
+            font-size: 1.1em;
         }
         .feature-grid {
             display: flex;
@@ -174,7 +193,14 @@
         .feature:hover {
             transform: translateY(-10px);
         }
-        .team, .invest {
+        .feature p {
+            font-size: 1.1em;
+        }
+        .team {
+            background: #f9f9f9;
+            padding-bottom: 40px;
+        }
+        .invest {
             background: #f9f9f9;
         }
         .form-container {
@@ -206,7 +232,7 @@
             background: #333;
         }
         .privacy {
-            font-size: 0.9em;
+            font-size: 1em;
             color: #666;
             margin-top: 10px;
         }
@@ -215,7 +241,11 @@
             color: white;
             padding: 20px;
             text-align: center;
-            font-size: 0.9em;
+            font-size: 1em;
+        }
+        #problems > p, #solutions > p, #waitlist > p, #team > p, #invest > p {
+            font-size: 1.3em;
+            margin: 10px 0;
         }
         @media (max-width: 768px) {
             nav {
@@ -226,6 +256,7 @@
             }
             .nav-links a {
                 margin: 0 10px;
+                font-size: 1.2em;
             }
             .problems-grid {
                 flex-direction: column;
@@ -253,8 +284,11 @@
             h1 {
                 font-size: 2em;
             }
-            .hero-logo {
-                width: 200px; /* Slightly smaller for mobile */
+            .moving-icon {
+                width: 144px;
+            }
+            .icon-lane {
+                height: 160px;
             }
         }
     </style>
@@ -272,9 +306,13 @@
         </div>
     </nav>
 
+    <!-- Icon Animation Lane -->
+    <div class="icon-lane">
+        <img src="SpreemaLogo.png" alt="Spreema Moving Icon" class="moving-icon">
+    </div>
+
     <!-- Hero Section -->
     <header id="home">
-        <img src="SpreemaLogo.png" alt="Spreema Logo" class="hero-logo">
         <h1>Reinventing E-Commerce with AI</h1>
         <p>Spreema is an AI-powered marketplace that restores trust, simplifies shopping, and delivers joy to every customer.</p>
         <a href="#waitlist" class="cta-button">Join the Waitlist</a>
@@ -423,16 +461,29 @@
     </footer>
 
     <script>
-        // Smooth scrolling for nav links with offset for fixed nav
+        // Scroll to top on page load to show moving logo
+        window.onload = () => {
+            window.scrollTo(0, 0);
+        };
+
+        // Smooth scrolling for nav links with offset for fixed nav, except for #home
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const navHeight = document.querySelector('nav').offsetHeight;
-                window.scrollTo({
-                    top: target.offsetTop - navHeight,
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    const target = document.querySelector(targetId);
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    window.scrollTo({
+                        top: target.offsetTop - navHeight,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
