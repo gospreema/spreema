@@ -56,7 +56,7 @@
             position: absolute;
             width: 100%;
             height: 200px;
-            top: 66px; /* Changed from 115px */
+            top: 66px;
             z-index: 999;
             overflow: hidden;
             background: white;
@@ -65,7 +65,7 @@
             width: 192px;
             position: absolute;
             left: -192px;
-            top: 35px; /* Added to move logo down */
+            top: 35px;
             animation: moveAcross 8s ease-in-out infinite;
             animation-delay: 3s;
             background: white;
@@ -79,7 +79,7 @@
             color: white;
             text-align: center;
             padding: 60px 20px;
-            margin-top: 216px; /* Adjusted for new icon-lane position */
+            margin-top: 216px;
         }
         h1 {
             font-family: 'Poppins', sans-serif;
@@ -120,6 +120,8 @@
         }
         .problem-icon {
             width: 60px;
+            height: 60px;
+            object-fit: contain;
             margin-bottom: 10px;
         }
         .problems-grid {
@@ -292,6 +294,18 @@
                 height: 160px;
             }
         }
+        @media (max-width: 430px) {
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 1em;
+            }
+            .nav-links {
+                margin-top: 5px;
+            }
+            nav {
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -328,6 +342,7 @@
                 <img src="BrokenSearch.png" alt="Broken Search Icon" class="problem-icon">
                 <h3>Search Struggles</h3>
                 <p>45% of customers face poor search functionality, with 40% overwhelmed by options and 35% confused by filters, driving frustration and lost sales.</p>
+                <br>
                 <ul>
                     <li>45% - Poor Search Functionality</li>
                     <li>40% - Overwhelming Options</li>
@@ -342,6 +357,7 @@
                 <img src="BrokenDropoff.png" alt="Broken Dropoff Icon" class="problem-icon">
                 <h3>Checkout Dropoff</h3>
                 <p>Over 70% cart abandonment due to 66% citing shipping costs, 14% missing guest checkout, and 11% facing complex processes.</p>
+                <br>
                 <ul>
                     <li>66% - Shipping Costs</li>
                     <li>41% - Not Ready to Purchase</li>
@@ -356,6 +372,7 @@
                 <img src="BrokenReturns.png" alt="Broken Returns Icon" class="problem-icon">
                 <h3>Costly Returns</h3>
                 <p>Returns exceed $550B yearly, with 50% from wrong sizes, 42% unmet expectations, and 20% counterfeit concerns.</p>
+                <br>
                 <ul>
                     <li>52% - Damaged or Defective</li>
                     <li>50% - Wrong Size or Fit</li>
@@ -489,15 +506,17 @@
         });
 
         // Email obfuscation and mailto link setup
-        const emailUser = 'john.lehew';
+        const emailTo = 'carrie.song';
+        const emailCc = 'john.lehew';
         const emailDomain = 'spreema.com';
-        const emailAddress = emailUser + '@' + emailDomain;
+        const emailToAddress = emailTo + '@' + emailDomain;
+        const emailCcAddress = emailCc + '@' + emailDomain;
 
         // Investor contact link
         const investorLink = document.getElementById('investor-contact');
         investorLink.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'mailto:' + emailAddress + '?subject=Investor Inquiry for Spreema';
+            window.location.href = 'mailto:' + emailToAddress + '?cc=' + emailCcAddress + '&subject=Investor Inquiry for Spreema';
         });
 
         // Waitlist form submission
@@ -506,7 +525,7 @@
             e.preventDefault();
             const userEmail = document.getElementById('waitlist-email').value;
             if (userEmail) {
-                window.location.href = 'mailto:' + emailAddress + '?subject=Waitlist Sign-Up&body=Please add me to the Spreema waitlist: ' + userEmail;
+                window.location.href = 'mailto:' + emailToAddress + '?cc=' + emailCcAddress + '&subject=Waitlist Sign-Up&body=Please add me to the Spreema waitlist: ' + userEmail;
             }
         });
     </script>
