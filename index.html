@@ -541,7 +541,18 @@
                 }
             });
         });
-
+		
+        // Track virtual pageviews for anchor link navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').substring(1);
+                gtag('event', 'page_view', {
+                    'page_path': '/' + targetId,
+                    'page_title': 'Spreema - ' + targetId.charAt(0).toUpperCase() + targetId.slice(1)
+                });
+            });
+        });
+		
         // Email obfuscation and mailto link setup
         const emailTo = 'carrie.song';
         const emailCc = 'john.lehew';
@@ -553,6 +564,10 @@
         const investorLink = document.getElementById('investor-contact');
         investorLink.addEventListener('click', (e) => {
             e.preventDefault();
+            gtag('event', 'investor_contact', {
+                'event_category': 'Engagement',
+                'event_label': 'Investor Contact Click'
+            });
             window.location.href = 'mailto:' + emailToAddress + '?cc=' + emailCcAddress + '&subject=Investor Inquiry for Spreema';
         });
 
@@ -562,6 +577,10 @@
             e.preventDefault();
             const userEmail = document.getElementById('waitlist-email').value;
             if (userEmail) {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Waitlist Form Submission'
+                });
                 window.location.href = 'mailto:' + emailToAddress + '?cc=' + emailCcAddress + '&subject=Waitlist Sign-Up&body=Please add me to the Spreema waitlist: ' + userEmail;
             }
         });
